@@ -26,10 +26,10 @@ static char utf8len_tab[256] =
 };
 
 /* Return length of UTF-8 string */
-int ueStrLen( char *str )
+int ueStrLen( const char *str )
 {
 	int length = 0;
-	char *strptr = str;
+	const char *strptr = str;
 
 	while ( strptr[ 0 ] != '\0' ) {
 		strptr += ueBytesFromChar( strptr[0] );
@@ -74,5 +74,16 @@ char *ueStrSeek( char *src, size_t n )
 		iter += ueBytesFromChar( iter[0] );
 	}
 	return iter;
+}
+
+const char* ueStrstr(const char* str, size_t lstr, const char* substr, size_t lsub){
+        const char* p=str;
+        size_t ub;
+        if(lstr<lsub) return NULL;
+        ub=lstr-lsub;
+        for(; p-str<=ub; p++){
+                if(!strncmp(p, substr, lsub)) return p;
+        }
+        return NULL;
 }
 
