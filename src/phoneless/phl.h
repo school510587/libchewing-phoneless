@@ -1,3 +1,16 @@
+/**
+ * phl.h
+ * 
+ * Copyright (c) 2012
+ *      Bo-cheng Jan.
+ *      All rights reserved.
+ * 
+ * Copyright (c) 2012
+ *      libchewing Core Team. See ChangeLog for details.
+ * 
+ * See the file "COPYING" for information on usage and redistribution
+ * of this file.
+ */
 #ifndef PHL_H
 #define PHL_H
 #include "internal/global-private.h"
