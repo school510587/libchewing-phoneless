@@ -162,7 +162,7 @@ void CountPHLPhrases(){
         }
 }
 /**
- * PhraseSetKey()
+ * PhraseSetKeyin()
  *   This function finds all possibilities 
  * of key sequences for each phrase. p is 
  * the record providing a Chinese phrase. 
@@ -178,7 +178,7 @@ void CountPHLPhrases(){
  * phl_phr, so phl_phr_count is set to 0 
  * before calling this function.
  */
-void PhraseSetKey(const RECORD* r, int w){
+void PhraseSetKeyin(const RECORD* r, int w){
         static uint32 x[MAXKEYIN]={0};
         if(w<r->lstr){
                 const char *p, *q;
@@ -204,7 +204,7 @@ void PhraseSetKey(const RECORD* r, int w){
                         sscanf(q, "%x", &t);
 #endif
                         x[w]=t; // w-th key is determined.
-                        PhraseSetKey(r, w+1);
+                        PhraseSetKeyin(r, w+1);
                 }
         }
         else{ // A keyin sequence is determined in x.key field.
@@ -299,8 +299,8 @@ int main(int argc, char* argv[]){
                 fprintf(stderr, "%s: Cannot allocate %ld instances for phoneless phrases.\n", argv[0], phl_phr_count);
                 return 1;
         }
-        phl_phr_count=0; // Then re-count in PhraseSetKey().
-        for(i=0; i<nData; i=data[i].next) if(data[i].lstr!=EOF) PhraseSetKey(&data[i], 0);
+        phl_phr_count=0; // Then re-count in PhraseSetKeyin().
+        for(i=0; i<nData; i=data[i].next) if(data[i].lstr!=EOF) PhraseSetKeyin(&data[i], 0);
         qsort(phl_phr, phl_phr_count, sizeof(PHL_PHRASE), CompPHLPhrase);
         for(i=0; i<phl_phr_count; i++){
                 if(i==0 || CompKey(i, i-1)!=0){
