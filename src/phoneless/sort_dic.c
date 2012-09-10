@@ -259,9 +259,6 @@ int main(int argc, char* argv[]){
         size_t offset=0, csize;
         int tmp;
 #ifdef USE_BINARY_DATA
-      //  unsigned char size;
-#endif
-#ifdef USE_BINARY_DATA
         sq_index=fopen(PHL_SQ_INDEX_FILE, "wb");
 #else
         sq_index=fopen(PHL_SQ_INDEX_FILE, "w");
