@@ -42,7 +42,8 @@ bin_PROGRAMS = \
 	simulate \
 	randkeystroke \
 	$(TEXT_UI_BIN) \
-	$(UNIT_TEST_BIN)
+	$(UNIT_TEST_BIN) \
+	phoneless_test
 
 INCLUDES = \
 	-I$(top_srcdir)/include \
@@ -51,7 +52,8 @@ INCLUDES = \
 	-DTEST_HASH_DIR="\"$(PWD)\"" \
 	$(CHECK_CFLAGS) \
 	$(NCURSESW_CFLAGS) \
-	-I$(top_srcdir)/src/porting_layer/include
+	-I$(top_srcdir)/src/porting_layer/include \
+	-I$(top_srcdir)/src/phoneless
 
 testchewing_SOURCES = testchewing.c
 testchewing_LDADD = $(LIBCHEWING)
@@ -86,5 +88,10 @@ do_test_DEPENDENCIES = $(LIBCHEWING)
 else
 UNIT_TEST_BIN=
 endif
+
+phoneless_test_SOURCES = phoneless_test.c
+phoneless_test_LDADD= \
+	$(top_builddir)/src/porting_layer/src/libporting_layer.la \
+	$(top_builddir)/src/phoneless/phoneless_util.o
 
 CLEANFILES = uhash.dat materials.txt-random
