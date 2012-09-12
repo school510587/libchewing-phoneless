@@ -1,3 +1,12 @@
+/**
+ * phoneless_test.c
+ * 
+ * Copyright (c) 2012
+ *      libchewing Core Team. See ChangeLog for details.
+ * 
+ * See the file "COPYING" for information on usage and redistribution
+ * of this file.
+ */
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
