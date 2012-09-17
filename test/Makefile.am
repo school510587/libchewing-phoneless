@@ -43,7 +43,8 @@ bin_PROGRAMS = \
 	randkeystroke \
 	$(TEXT_UI_BIN) \
 	$(UNIT_TEST_BIN) \
-	phoneless_test
+	phoneless_test \
+	reverse_index_test
 
 INCLUDES = \
 	-I$(top_srcdir)/include \
@@ -93,5 +94,9 @@ phoneless_test_SOURCES = phoneless_test.c
 phoneless_test_LDADD= \
 	$(top_builddir)/src/porting_layer/src/libporting_layer.la \
 	$(top_builddir)/src/phoneless/phoneless_util.o
+reverse_index_test_SOURCES = reverse_index_test.c
+reverse_index_test_LDADD = \
+	$(top_builddir)/src/common/libcommon.la \
+	$(top_builddir)/src/porting_layer/src/libporting_layer.la
 
 CLEANFILES = uhash.dat materials.txt-random
