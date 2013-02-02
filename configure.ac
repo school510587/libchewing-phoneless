@@ -194,6 +194,7 @@ AC_CONFIG_FILES([
         src/porting_layer/Makefile
         src/porting_layer/src/Makefile
         src/tools/Makefile
+	src/phoneless/Makefile
         test/Makefile
 ])
 AC_OUTPUT
